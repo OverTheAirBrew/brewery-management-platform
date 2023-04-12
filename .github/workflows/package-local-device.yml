@@ -8,6 +8,9 @@ on:
       - packages/local-device
       - .github/actions/package-local-device.yml
   pull_request:
+    types:
+      - opened
+      - synchronize
     paths:
       - packages/local-device
       - .github/workflows/package-local-device
