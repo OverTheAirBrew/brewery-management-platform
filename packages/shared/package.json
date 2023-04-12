@@ -1,0 +1,32 @@
+{
+  "name": "@overtheairbrew/shared",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "Nick Sharp <nick.sharp.87@gmail.com>",
+  "homepage": "https://github.com/overtheairbrew/homebrew#readme",
+  "license": "ISC",
+  "private": true,
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/overtheairbrew/homebrew.git"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist coverage src/**/*.{js,map}",
+    "build": "tsc",
+    "test": "",
+    "migrate": ""
+  },
+  "bugs": {
+    "url": "https://github.com/overtheairbrew/homebrew/issues"
+  },
+  "dependencies": {
+    "@nestjs/common": "^8.4.7",
+    "@nestjs/event-emitter": "^1.3.0",
+    "@nestjs/swagger": "^6.3.0",
+    "class-validator": "^0.14.0"
+  },
+  "devDependencies": {
+    "tsconfig": "*"
+  }
+}

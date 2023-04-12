@@ -1,0 +1,31 @@
+name: Build And Publish Package
+description: Builds and publishes a package for publish
+
+inputs:
+  PACKAGE_NAME:
+    description: The name of the package to be published
+    required: true
+  PACKAGE_FOLDER:
+    description: The folder that includes the package
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@3
+      with:
+        node-version: 18
+    - name: Install turbo
+      shell: bash
+      run: npm i -g turbo
+    - name: Generate output
+      shell: bash
+      run: turbo prune --scope="${{ inputs.PACKAGE_NAME }}"
+    - name: Build Package
+      shell: bash
+      working-directory: ./out/packages/${{ inputs.FOLDER_NAME }}
+      run: npm run build
+    - name: Push Package
+      shell: bash
+      if: github.ref == 'refs/head/develop'
+      run: echo "WOULD HAVE PUBLISHED"
