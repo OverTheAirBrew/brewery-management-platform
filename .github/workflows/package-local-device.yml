@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - packages/local-device
+      - packages/local-device/**
       - .github/actions/package-local-device.yml
   pull_request:
     types:
