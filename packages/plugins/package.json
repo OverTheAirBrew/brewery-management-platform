@@ -53,5 +53,8 @@
     "clean": true,
     "dts": true,
     "minify": false
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
