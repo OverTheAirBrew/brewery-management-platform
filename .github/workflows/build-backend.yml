@@ -1,0 +1,29 @@
+name: Build Backend
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    paths:
+      - apps/backend
+      - .github/workflows/build-backend
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install turbo
+        shell: bash
+        run: npm i -g turbo
+      - name: Generate output
+        shell: bash
+        run: turbo prune --scope="@overtheairbrew/backend"
+      - name: Build Package
+        shell: bash
+        working-directory: ./out
+        run: turbo build
