@@ -17,7 +17,8 @@
   },
   "scripts": {
     "prebuild": "rimraf dist coverage src/**/*.{js,map}",
-    "build": "tsc",
+    "build:local": "tsc",
+    "build": "tsup",
     "test": "jest",
     "test:cov": "jest --coverage",
     "test:watch": "jest --watch",
@@ -54,5 +55,13 @@
       "index.ts",
       "interfaces.ts"
     ]
+  },
+  "tsup": {
+    "entry": ["src/index.ts"],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "dts": true,
+    "minify": false
   }
 }

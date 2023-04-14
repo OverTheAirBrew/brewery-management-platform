@@ -23,8 +23,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "prebuild-prod": "rimraf dist",
-    "build": "tsc",
-    "build-prod": "tsup",
+    "build:local": "tsc",
+    "build": "tsup",
     "start:dev": "tsc -w"
   },
   "author": "",

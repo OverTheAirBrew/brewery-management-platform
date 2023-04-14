@@ -13,7 +13,8 @@
   },
   "scripts": {
     "prebuild": "rimraf dist coverage src/**/*.{js,map}",
-    "build": "tsc",
+    "build": "tsup",
+    "build:local": "tsc",
     "test": "",
     "migrate": "",
     "start:dev": "tsc -w"
@@ -28,6 +29,15 @@
     "class-validator": "^0.14.0"
   },
   "devDependencies": {
-    "tsconfig": "*"
+    "tsconfig": "*",
+    "tsup": "^6.7.0"
+  },
+  "tsup": {
+    "entry": ["src/index.ts"],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "dts": true,
+    "minify": false
   }
 }

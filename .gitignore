@@ -35,4 +35,5 @@ tsconfig.tsbuildinfo
 # next.js
 .next/
 out/
+output/
 build
