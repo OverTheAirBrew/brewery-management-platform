@@ -5,12 +5,9 @@
     "declaration": true,
     "preserveSymlinks": true,
     "paths": {
-      "@overtheairbrew/shared": [
-        "../shared"
-      ],
-      "@overtheairbrew/one-wire-sensor": [
-        "../one-wire-sensor"
-      ]
+      "@overtheairbrew/shared": ["../shared"],
+      "@overtheairbrew/one-wire-sensor": ["../one-wire-sensor"],
+      "@overtheairbrew/plugins": ["../plugins"]
     }
   },
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]

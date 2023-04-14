@@ -3,7 +3,7 @@ import {
   NumberPropertyOutput,
   SelectBoxPropertyOutput,
   StringPropertyOutput,
-} from './properties.output';
+} from '@overtheairbrew/plugins';
 
 @ApiExtraModels(
   StringPropertyOutput,

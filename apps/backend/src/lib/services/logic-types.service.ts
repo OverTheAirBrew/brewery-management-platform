@@ -1,9 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import {
-  Logic,
-  LogicIdentifier,
-  LogicTypeOutput,
-} from '@overtheairbrew/shared';
+import { Logic, LogicIdentifier } from '@overtheairbrew/plugins';
+import { LogicTypeOutput } from '@overtheairbrew/shared';
 
 @Injectable()
 export class LogicTypesService {

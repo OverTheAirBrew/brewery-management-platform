@@ -3,7 +3,10 @@
   "compilerOptions": {
     "outDir": "./dist",
     "declaration": true,
-    "preserveSymlinks": true
+    "preserveSymlinks": true,
+    "paths": {
+      "@overtheairbrew/plugins": ["../plugins"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }

@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
-    "@overtheairbrew/shared": "*"
+    "@overtheairbrew/shared": "*",
+    "@overtheairbrew/plugins": "*"
   },
   "devDependencies": {
     "tsconfig": "*"
@@ -57,7 +58,9 @@
     ]
   },
   "tsup": {
-    "entry": ["src/index.ts"],
+    "entry": [
+      "src/index.ts"
+    ],
     "splitting": false,
     "sourcemap": true,
     "clean": true,

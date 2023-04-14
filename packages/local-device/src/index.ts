@@ -1,4 +1,4 @@
-import { PluginConfig } from '../../shared/dist';
+import { PluginConfig } from '@overtheairbrew/plugins';
 import { LocalDevice } from './device';
 import { LocalDeviceModule } from './module';
 
