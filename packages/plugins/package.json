@@ -22,7 +22,7 @@
     "migrate": "",
     "start:dev": "tsc -w",
     "version": "changeset version",
-    "release": "semantic-release -e semantic-release-monorepo"
+    "release": "semantic-release"
   },
   "bugs": {
     "url": "https://github.com/overtheairbrew/homebrew/issues"
@@ -40,7 +40,6 @@
     "@semantic-release/release-notes-generator": "^10.0.3",
     "rimraf": "^5.0.0",
     "semantic-release": "^19.0.3",
-    "semantic-release-monorepo": "^7.0.5",
     "tsconfig": "*",
     "tsup": "^6.7.0"
   },
