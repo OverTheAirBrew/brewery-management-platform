@@ -1,0 +1,43 @@
+{
+  "name": "@overtheairbrew/otabmp-local-device",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@nestjs/microservices": "^9.4.0",
+    "@nestjs/websockets": "^9.4.0",
+    "@overtheairbrew/one-wire-sensor": "*",
+    "brace-expansion": "^2.0.1",
+    "cache-manager": "^5.2.0",
+    "class-transformer": "^0.5.1",
+    "glob": "^10.0.0",
+    "minimatch": "^9.0.0",
+    "minipass": "^5.0.0",
+    "onoff": "^6.0.3",
+    "rimraf": "^5.0.0",
+    "tslib": "^2.4.0",
+    "typescript": "^5.0.4",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "prebuild-prod": "rimraf dist",
+    "build:local": "tsc",
+    "build": "tsup",
+    "start:dev": "tsc -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^6.7.0"
+  },
+  "tsup": {
+    "entry": ["src/index.ts"],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "dts": true,
+    "minify": false
+  }
+}

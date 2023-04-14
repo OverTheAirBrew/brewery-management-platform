@@ -1,0 +1,17 @@
+{
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
+    "preserveSymlinks": true,
+    "paths": {
+      "@overtheairbrew/shared": [
+        "../shared"
+      ],
+      "@overtheairbrew/one-wire-sensor": [
+        "../one-wire-sensor"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+}
