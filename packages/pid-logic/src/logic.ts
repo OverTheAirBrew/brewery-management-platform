@@ -1,5 +1,5 @@
 import { Injectable, Optional } from '@nestjs/common';
-import { Form, Logic } from '@overtheairbrew/shared';
+import { Form, Logic } from '@overtheairbrew/plugins';
 
 interface IPidLogicParams {
   p: number;

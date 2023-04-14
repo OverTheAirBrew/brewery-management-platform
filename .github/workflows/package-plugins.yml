@@ -1,0 +1,29 @@
+name: '[Package] Plugins'
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - packages/plugins/**
+      - .github/actions/package-plugins.yml
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    paths:
+      - packages/plugins
+      - .github/workflows/package-plugins.yml
+      - .github/actions/build-publish-package/*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/build-publish-package
+        with:
+          PACKAGE_NAME: '@overtheairbrew/plugins'
+          PACKAGE_FOLDER: plugins
+          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

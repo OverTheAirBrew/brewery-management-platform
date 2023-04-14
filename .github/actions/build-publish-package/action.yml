@@ -8,6 +8,12 @@ inputs:
   PACKAGE_FOLDER:
     description: The folder that includes the package
     required: true
+  GITHUB_TOKEN:
+    description: The github token
+    required: true
+  NPM_TOKEN:
+    description: The npm token
+    required: true
 
 runs:
   using: composite
@@ -21,11 +27,20 @@ runs:
     - name: Generate output
       shell: bash
       run: turbo prune --scope="${{ inputs.PACKAGE_NAME }}"
+    - name: Install Dependencies
+      shell: bash
+      working-directory: ./out
+      run: npm ci
     - name: Build Package
       shell: bash
-      working-directory: ./out/packages/${{ inputs.FOLDER_NAME }}
-      run: npm run build
+      working-directory: ./out
+      run: |
+        turbo build --filter=@overtheairbrew/plugins...
     - name: Push Package
       shell: bash
-      if: github.ref == 'refs/head/develop'
-      run: echo "WOULD HAVE PUBLISHED"
+      working-directory: ./out/packages/${{ inputs.PACKAGE_FOLDER }}
+      env:
+        NPM_TOKEN: ${{ inputs.NPM_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+      run: |
+        npm run release

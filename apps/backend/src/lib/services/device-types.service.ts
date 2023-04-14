@@ -1,9 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
-import {
-  Device,
-  DeviceIdentifier,
-  DeviceTypeOutput,
-} from '@overtheairbrew/shared';
+import { DeviceTypeOutput } from '@overtheairbrew/shared';
+
+import { Device, DeviceIdentifier } from '@overtheairbrew/plugins';
 
 @Injectable()
 export class DeviceTypesService {

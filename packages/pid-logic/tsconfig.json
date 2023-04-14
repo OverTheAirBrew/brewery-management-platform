@@ -5,9 +5,8 @@
     "declaration": true,
     "preserveSymlinks": true,
     "paths": {
-      "@overtheairbrew/shared": [
-        "../shared"
-      ],
+      "@overtheairbrew/shared": ["../shared"],
+      "@overtheairbrew/plugins": ["../plugins"]
     }
   },
   "exclude": ["node_modules", "dist"]

@@ -6,7 +6,7 @@ import {
   LogicIdentifier,
   PluginConfig,
   PluginType,
-} from '@overtheairbrew/shared';
+} from '@overtheairbrew/plugins';
 
 import findNodeModules from 'find-node-modules';
 import { existsSync, readdirSync, readFileSync } from 'fs';

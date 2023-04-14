@@ -5,7 +5,7 @@ import {
   Device,
   Sensor,
   SensorIdentifier,
-} from '@overtheairbrew/shared';
+} from '@overtheairbrew/plugins';
 
 @Injectable()
 export class LocalDevice extends Device<{}> {

@@ -1,4 +1,4 @@
-import { PluginConfig } from '@overtheairbrew/shared';
+import { PluginConfig } from '@overtheairbrew/plugins';
 import { PidLogic } from './logic';
 import { PidLogicModule } from './module';
 
