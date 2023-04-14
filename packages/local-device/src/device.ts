@@ -3,7 +3,6 @@ import {
   Actor,
   ActorIdentifier,
   Device,
-  Form,
   Sensor,
   SensorIdentifier,
 } from '@overtheairbrew/shared';
@@ -14,10 +13,11 @@ export class LocalDevice extends Device<{}> {
     @Inject(ActorIdentifier) public actors: Actor<any, any>[],
     @Inject(SensorIdentifier) public sensors: Sensor<any, any>[]
   ) {
-    super(
-      new Form().addString('hello', {
-        required: true,
-      })
-    );
+    super();
+  }
+
+  async validateConfiguration(config: {}): Promise<boolean> {
+    // We don't need to validate the config as there isn't any
+    return Object.keys(config).length === 0;
   }
 }

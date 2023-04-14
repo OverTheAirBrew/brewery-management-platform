@@ -24,7 +24,8 @@
     "prebuild": "rimraf dist",
     "prebuild-prod": "rimraf dist",
     "build": "tsc",
-    "build-prod": "tsup"
+    "build-prod": "tsup",
+    "start:dev": "tsc -w"
   },
   "author": "",
   "license": "ISC",

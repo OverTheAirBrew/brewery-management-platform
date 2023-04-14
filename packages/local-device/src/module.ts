@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { DS18B20Controller } from '@overtheairbrew/one-wire-sensor';
 import {
   Actor,
@@ -7,19 +6,18 @@ import {
   Sensor,
   SensorIdentifier,
 } from '@overtheairbrew/shared';
+import { DummyActor } from './actors/dummy';
+import { GpioActor } from './actors/gpio';
 import { LocalDevice } from './device';
-import { DummyActor } from './src/actors/dummy';
-import { GpioActor } from './src/actors/gpio';
 
-import { DummySensor } from './src/sensors/dummy';
-import { OneWireSensor } from './src/sensors/one-wire';
+import { DummySensor } from './sensors/dummy';
+import { OneWireSensor } from './sensors/one-wire';
 
 const Actors = [GpioActor, DummyActor];
 const Sensors = [OneWireSensor, DummySensor];
 
 @Module({
   providers: [
-    ConfigService,
     DS18B20Controller,
     ...Actors,
     ...Sensors,

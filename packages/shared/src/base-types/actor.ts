@@ -1,4 +1,5 @@
 import { ClassType } from '../class-type';
+import { Form } from '../input-types/form';
 
 export interface IActorProps<TDevice, TProps> {
   device: TDevice;
@@ -12,6 +13,7 @@ export interface IActor<TDevice, TProps> {
     params: IActorProps<TDevice, TProps>
   ): Promise<{ state: ActorState }>;
   isAvailable(): Promise<boolean>;
+  getConfigOptions(): Promise<any>;
 }
 
 export const IActor = class Dummy {} as ClassType<IActor<any, any>>;
@@ -23,7 +25,7 @@ export abstract class Actor<TDevice, TProps>
 {
   public name: string;
 
-  constructor() {
+  constructor(private configOptions: Form = new Form()) {
     this.name = this.constructor.name;
   }
 
@@ -41,6 +43,10 @@ export abstract class Actor<TDevice, TProps>
 
   public async isAvailable(): Promise<boolean> {
     return true;
+  }
+
+  public async getConfigOptions() {
+    return await this.configOptions.build();
   }
 
   protected abstract processOn(

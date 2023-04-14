@@ -1,5 +1,5 @@
 {
-  "name": "@overtheairbrew/one-wire-sensor",
+  "name": "@overtheairbrew/otabmp-pid-logic",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "Nick Sharp <nick.sharp.87@gmail.com>",
@@ -29,8 +29,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
-    "@overtheairbrew/shared": "*",
-    "fast-glob": "^3.2.11"
+    "@overtheairbrew/shared": "*"
   },
   "devDependencies": {
     "tsconfig": "*"

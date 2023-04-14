@@ -1,4 +1,5 @@
 import { ClassType } from '../class-type';
+import { Form } from '../input-types/form';
 
 export interface ILogic<T> {
   run: (
@@ -6,13 +7,24 @@ export interface ILogic<T> {
     currentTemp: number,
     targetTemp: number
   ) => Promise<{ heatTime: number; waitTime: number; nextParams: T }>;
+  getConfigOptions(): Promise<any>;
 }
 
 export const ILogic = class Dummy {} as ClassType<ILogic<any>>;
 
 export abstract class Logic<T> implements ILogic<T> {
+  public name: string;
+
+  constructor(private configOptions: Form = new Form()) {
+    this.name = this.constructor.name;
+  }
+
   public async run(params: T, currentTemp: number, targetTemp: number) {
     return await this.process(params, currentTemp, targetTemp);
+  }
+
+  public async getConfigOptions() {
+    return await this.configOptions.build();
   }
 
   protected abstract process(

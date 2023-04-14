@@ -2,7 +2,7 @@ import {
   NumberPropertyOutput,
   SelectBoxPropertyOutput,
   StringPropertyOutput,
-} from '../models/outputs';
+} from '../models/outputs/properties.output';
 
 interface StringOptions {
   required: boolean;

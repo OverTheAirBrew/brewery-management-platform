@@ -10,7 +10,7 @@ import {
   NumberPropertyOutput,
   SelectBoxPropertyOutput
 )
-export class DeviceTypeOutput {
+export class LogicTypeOutput {
   constructor(name: string, properties: StringPropertyOutput[]) {
     this.name = name;
     this.properties = properties;
