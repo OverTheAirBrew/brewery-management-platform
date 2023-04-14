@@ -1,5 +1,5 @@
 {
-  "tagFormat": "@overtheairbrew/plugins - ${version}",
+  "tagFormat": "@overtheairbrew/plugins-${version}",
   "branches": [
     "main", 
     {
