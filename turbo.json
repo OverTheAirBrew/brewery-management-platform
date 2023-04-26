@@ -11,6 +11,12 @@
     },
     "start:dev": {
       "cache": false
+    },
+    "test:cov": {
+      "cache": false
+    },
+    "test:e2e:cov": {
+      "cache": false
     }
   }
 }

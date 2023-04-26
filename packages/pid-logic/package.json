@@ -19,10 +19,10 @@
     "prebuild": "rimraf dist coverage src/**/*.{js,map}",
     "build:local": "tsc",
     "build": "tsup",
-    "test": "jest",
-    "test:cov": "jest --coverage",
-    "test:watch": "jest --watch",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test1": "jest",
+    "test1:cov": "jest --coverage",
+    "test1:watch": "jest --watch",
+    "test1:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "start:dev": "tsc -w"
   },
   "bugs": {

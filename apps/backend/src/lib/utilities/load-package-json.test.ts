@@ -3,7 +3,7 @@ import { loadPackageJson } from './load-package-json';
 
 jest.mock('fs');
 
-const mockFs = jest.mocked(fs, true);
+const mockFs = jest.mocked(fs, { shallow: true });
 
 describe('lib/utilities/load-package-json', () => {
   it('should throw an error when the package path does not contain a package.json', async () => {

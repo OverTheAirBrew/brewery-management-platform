@@ -1,0 +1,18 @@
+name: '[PACKAGE] Build Local Device'
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/build-app-package
+        with:
+          PACKAGE_NAME: '@overtheairbrew/otabmp-local-device'
+          COVERAGE_PATH: ./out/packages/local-device
+          NAME: local-device

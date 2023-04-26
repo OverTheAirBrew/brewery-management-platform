@@ -1,0 +1,18 @@
+name: '[PACKAGE] Build One Wire Sensor'
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/build-app-package
+        with:
+          PACKAGE_NAME: '@overtheairbrew/one-wire-sensor'
+          COVERAGE_PATH: ./out/packages/one-wire-sensor
+          NAME: one-wire-sensor

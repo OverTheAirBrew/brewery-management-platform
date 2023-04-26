@@ -8,9 +8,9 @@ jest.mock('find-node-modules');
 jest.mock('fs');
 jest.mock('./load-package-json');
 
-const mockedFindNodeModules = jest.mocked(findNodeModules, true);
-const mockedFs = jest.mocked(fs, true);
-const mockedLoadPackageJson = jest.mocked(loadPackageJson, true);
+const mockedFindNodeModules = jest.mocked(findNodeModules, { shallow: true });
+const mockedFs = jest.mocked(fs, { shallow: true });
+const mockedLoadPackageJson = jest.mocked(loadPackageJson, { shallow: true });
 
 describe('lib/utilities/find-node-modules-matching-regex', () => {
   afterEach(() => {
