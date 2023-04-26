@@ -18,15 +18,15 @@ jobs:
       - name: Prune backend
         run: turbo prune --scope=@overtheairbrew/backend
       - name: Install
-        working-directory: ./out
+        working-directory: out
         run: npm ci
       - name: Test
-        working-directory: ./out
+        working-directory: out
         run: |
           turbo test:cov
           turbo test:e2e
       - name: Build
-        working-directory: ./out
+        working-directory: out
         run: turbo build --filter=@overtheairbrew/backend...
 
       # - name: Get env name
