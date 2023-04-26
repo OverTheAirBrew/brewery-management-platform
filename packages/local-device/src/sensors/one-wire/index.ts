@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DS18B20Controller } from '@overtheairbrew/one-wire-sensor';
-import { Form, ISensorProps, Sensor } from '@overtheairbrew/shared';
+import { Form, ISensorProps, Sensor } from '@overtheairbrew/plugins';
 import { existsSync } from 'fs';
 
 export interface IOneWireParams {

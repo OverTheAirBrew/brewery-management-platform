@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DeviceInput } from '@overtheairbrew/shared';
+import { DeviceInput, DeviceOutput } from '@overtheairbrew/shared';
 import { TestContext, object, string } from 'yup';
 import { REPOSITORIES } from '../../data/database.abstractions';
 import { Device } from '../../data/entities/device.entity';
@@ -53,5 +53,27 @@ export class DevicesService {
     });
 
     return createdDevice.id;
+  }
+
+  async getDevices() {
+    const devices = await this.repository.findAll();
+    return await Promise.all(devices.map(this.mapDevice));
+  }
+
+  async getDevice(device_id: string) {
+    const device = await this.repository.findByPk(device_id);
+
+    if (!device) throw new Error(`Device with id ${device_id} was not found.`);
+
+    return await this.mapDevice(device);
+  }
+
+  private async mapDevice(device: Device) {
+    return new DeviceOutput(
+      device.id,
+      device.name,
+      device.type_id,
+      device.config,
+    );
   }
 }

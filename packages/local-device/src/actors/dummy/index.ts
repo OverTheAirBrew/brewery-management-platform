@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { Actor, IActor, IActorProps } from '@overtheairbrew/shared';
+import { Actor, IActor, IActorProps } from '@overtheairbrew/plugins';
 
 interface IDummyActorProps {}
 

@@ -5,7 +5,7 @@ import {
   ActorIdentifier,
   Sensor,
   SensorIdentifier,
-} from '@overtheairbrew/shared';
+} from '@overtheairbrew/plugins';
 import { DummyActor } from './actors/dummy';
 import { GpioActor } from './actors/gpio';
 import { LocalDevice } from './device';

@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Direction, Gpio } from 'onoff';
 
-import { Actor, ActorState, IActor, IActorProps } from '@overtheairbrew/shared';
+import {
+  Actor,
+  ActorState,
+  IActor,
+  IActorProps,
+} from '@overtheairbrew/plugins';
 
 interface IGpioActorParams {
   gpio: number;

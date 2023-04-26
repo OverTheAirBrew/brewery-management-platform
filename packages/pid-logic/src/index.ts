@@ -3,7 +3,7 @@ import { PidLogic } from './logic';
 import { PidLogicModule } from './module';
 
 const config: PluginConfig = {
-  type: 'logics',
+  type: 'logic',
   modules: [PidLogicModule],
   logics: [PidLogic],
 };

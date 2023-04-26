@@ -5,18 +5,35 @@ on:
     types:
       - opened
       - synchronize
-    paths:
-      - apps/backend
-      - .github/workflows/build-backend
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Get env name
-        id: env-name
-        uses: ./.github/actions/get-env-name
-      - name: Build
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm i -g turbo
+      - name: Prune backend
+        run: turbo prune --scope=@overtheairbrew/backend
+      - name: Install
+        working-directory: ./out
+        run: npm ci
+      - name: Test
+        working-directory: ./out
         run: |
-          docker build -t overtheairbrew/brewery-management-platform:backend-${{ steps.env-name.outputs.env_name }} -f ./apps/backend/Dockerfile .
+          turbo test:cov
+          turbo test:e2e
+      - name: Build
+        working-directory: ./out
+        run: turbo build --filter=@overtheairbrew/backend...
+
+      # - name: Get env name
+      #   id: env-name
+      #   uses: ./.github/actions/get-env-name
+      # - name: Install
+      #   run: npm
+      # - name: Build
+      #   run: |
+      #     docker build -t overtheairbrew/brewery-management-platform:backend-${{ steps.env-name.outputs.env_name }} -f ./apps/backend/Dockerfile .
