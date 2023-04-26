@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { DeviceInput } from '@overtheairbrew/shared';
-import { object, string, TestContext } from 'yup';
+import { TestContext, object, string } from 'yup';
 import { REPOSITORIES } from '../../data/database.abstractions';
 import { Device } from '../../data/entities/device.entity';
 import { DeviceTypesService } from './device-types.service';
@@ -26,6 +26,10 @@ const createSchema = object({
       value,
     );
   }),
+});
+
+const updateSchema = createSchema.shape({
+  id: string().required().uuid(),
 });
 
 @Injectable()
