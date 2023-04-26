@@ -22,8 +22,7 @@
       "@overtheairbrew/shared": ["../../packages/shared"],
       "@overtheairbrew/local-device": ["../../packages/local-device"],
       "@overtheairbrew/pid-logic": ["../../packages/pid-logic"],
-      "@overtheairbrew/plugins": ["../../packages/plugins"],
-      "@overtheairbrew/test-package": ["../../packages/test-package"]
+      "@overtheairbrew/plugins": ["../../packages/plugins"]
     }
   }
 }
