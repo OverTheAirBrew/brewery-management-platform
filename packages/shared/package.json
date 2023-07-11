@@ -17,9 +17,7 @@
     "build:local": "tsc",
     "test": "",
     "migrate": "",
-    "start:dev": "tsc -w",
-    "version": "changeset version",
-    "semantic-release": "semantic-release -e semantic-release-monorepo"
+    "start:dev": "tsc -w"
   },
   "bugs": {
     "url": "https://github.com/overtheairbrew/homebrew/issues"
