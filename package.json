@@ -14,7 +14,7 @@
     "dev": "turbo run start:dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "$DOCKER || is-ci || husky install",
+    "prepare": "is-ci || husky install",
     "release": "auto shipit --dry-run",
     "release:ci": "auto shipit -v"
   },
