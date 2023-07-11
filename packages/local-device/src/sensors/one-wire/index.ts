@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { DS18B20Controller } from '@overtheairbrew/one-wire-sensor';
+import { Inject, Injectable } from '@nestjs/common';
+import { IOneWireController } from '@overtheairbrew/one-wire-sensor/dist';
 import { Form, ISensorProps, Sensor } from '@overtheairbrew/plugins';
 import { existsSync } from 'fs';
+import { ILocalDeviceConfig } from '../../device';
 
 export interface IOneWireParams {
   sensorAddress: string;
@@ -9,18 +10,22 @@ export interface IOneWireParams {
 }
 
 @Injectable()
-export class OneWireSensor extends Sensor<{}, IOneWireParams> {
-  constructor(private oneWireController: DS18B20Controller) {
+export class OneWireSensor extends Sensor<ILocalDeviceConfig, IOneWireParams> {
+  constructor(
+    @Inject(IOneWireController) private oneWireController: IOneWireController,
+  ) {
+    console.log('CONSTRUCTOR', oneWireController);
+
     super(
       new Form()
         .addSelectBox('Sensor Address', {
           required: true,
-          values: () => this.getSensors(),
+          values: async () => await this.getSensors(),
         })
         .addInteger('Offset', {
           required: true,
           defaultValue: 0,
-        })
+        }),
     );
   }
 
@@ -29,11 +34,15 @@ export class OneWireSensor extends Sensor<{}, IOneWireParams> {
   }
 
   private async deviceExists(address: string) {
+    console.log('TESTING', this.oneWireController);
+
     const devices = await this.oneWireController.findDevices();
     return devices.includes(address);
   }
 
   private async getSensors() {
+    console.log('TESTING', this.oneWireController);
+
     const sensors = await this.oneWireController.findDevices();
     return sensors;
   }
@@ -44,7 +53,7 @@ export class OneWireSensor extends Sensor<{}, IOneWireParams> {
     if (!(await this.deviceExists(sensorAddress))) return null;
 
     const temperatureReading = await this.oneWireController.getCurrentValue(
-      params.sensor.sensorAddress
+      params.sensor.sensorAddress,
     );
 
     const offset = params.sensor.offset || 0;

@@ -1,6 +1,12 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DeviceInput, DeviceOutput } from '@overtheairbrew/shared';
-import { TestContext, object, string } from 'yup';
+import { Actor, Sensor } from '@overtheairbrew/plugins';
+import {
+  ActorTypeOutput,
+  DeviceInput,
+  DeviceOutput,
+  SensorTypeOutput,
+} from '@overtheairbrew/shared';
+import { object, string, TestContext } from 'yup';
 import { REPOSITORIES } from '../../data/database.abstractions';
 import { Device } from '../../data/entities/device.entity';
 import { DeviceTypesService } from './device-types.service';
@@ -66,6 +72,40 @@ export class DevicesService {
     if (!device) throw new Error(`Device with id ${device_id} was not found.`);
 
     return await this.mapDevice(device);
+  }
+
+  async getSensorTypes(deviceId: string) {
+    const device = await this.repository.findByPk(deviceId);
+    if (!device) throw new Error(`Device with id ${deviceId} was not found.`);
+    const deviceType = await this.deviceTypeService.getRawDeviceType(
+      device.type_id,
+    );
+
+    return await Promise.all(
+      deviceType.sensors.map((s) => this.mapSensorType(s, device.config)),
+    );
+  }
+
+  async getActorTypes(deviceId: string) {
+    const device = await this.repository.findByPk(deviceId);
+    if (!device) throw new Error(`Device with id ${deviceId} was not found.`);
+    const deviceType = await this.deviceTypeService.getRawDeviceType(
+      device.type_id,
+    );
+
+    return await Promise.all(
+      deviceType.actors.map((a) => this.mapActorType(a, device.config)),
+    );
+  }
+
+  private async mapSensorType(sensor: Sensor<any, any>, deviceConfig: any) {
+    const properties = await sensor.getConfigOptions(deviceConfig);
+    return new SensorTypeOutput(sensor.name, properties);
+  }
+
+  private async mapActorType(actor: Actor<any, any>, deviceConfig: any) {
+    const properties = await actor.getConfigOptions(deviceConfig);
+    return new ActorTypeOutput(actor.name, properties);
   }
 
   private async mapDevice(device: Device) {

@@ -4,6 +4,7 @@ import { Direction, Gpio } from 'onoff';
 import {
   Actor,
   ActorState,
+  Form,
   IActor,
   IActorProps,
 } from '@overtheairbrew/plugins';
@@ -25,7 +26,12 @@ export class GpioActor
   private attachedGpios: Record<number, Gpio> = {};
 
   constructor() {
-    super();
+    super(
+      new Form().addSelectBox('Gpio Pin', {
+        required: true,
+        values: gpioPinValues.map((val) => `${val}`),
+      }),
+    );
   }
 
   public async isAvailable(): Promise<boolean> {
@@ -43,7 +49,7 @@ export class GpioActor
   }
 
   protected async processCurrentState(
-    params: IActorProps<{}, IGpioActorParams>
+    params: IActorProps<{}, IGpioActorParams>,
   ) {
     const gpio = await this.getGpioInstance(params.actor.gpio, 'out');
     const state = gpio.readSync();

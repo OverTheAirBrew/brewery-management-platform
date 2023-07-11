@@ -2,6 +2,9 @@ import { Device, Logic, PluginConfig } from '@overtheairbrew/plugins';
 import { findPluginConfigurationsOfType } from './find-plugin-configurations-of-type';
 
 class TestDevice extends Device<any> {
+  public sensors = [];
+  public actors = [];
+
   validateConfiguration(config: any): Promise<boolean> {
     throw new Error('Method not implemented.');
   }

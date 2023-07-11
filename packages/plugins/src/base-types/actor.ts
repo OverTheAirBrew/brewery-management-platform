@@ -10,10 +10,10 @@ export interface IActor<TDevice, TProps> {
   on(params: IActorProps<TDevice, TProps>): Promise<void>;
   off(params: IActorProps<TDevice, TProps>): Promise<void>;
   getCurrentState(
-    params: IActorProps<TDevice, TProps>
+    params: IActorProps<TDevice, TProps>,
   ): Promise<{ state: ActorState }>;
   isAvailable(): Promise<boolean>;
-  getConfigOptions(): Promise<any>;
+  getConfigOptions(config: TDevice): Promise<any>;
 }
 
 export const IActor = class Dummy {} as ClassType<IActor<any, any>>;
@@ -45,17 +45,17 @@ export abstract class Actor<TDevice, TProps>
     return true;
   }
 
-  public async getConfigOptions() {
-    return await this.configOptions.build();
+  public async getConfigOptions(config: TDevice) {
+    return await this.configOptions.build(config);
   }
 
   protected abstract processOn(
-    params: IActorProps<TDevice, TProps>
+    params: IActorProps<TDevice, TProps>,
   ): Promise<void>;
   protected abstract processOff(
-    params: IActorProps<TDevice, TProps>
+    params: IActorProps<TDevice, TProps>,
   ): Promise<void>;
   protected abstract processCurrentState(
-    params: IActorProps<TDevice, TProps>
+    params: IActorProps<TDevice, TProps>,
   ): Promise<{ state: ActorState }>;
 }

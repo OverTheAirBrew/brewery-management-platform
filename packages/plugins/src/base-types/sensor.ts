@@ -9,7 +9,7 @@ export interface ISensorProps<TDevice, TProps> {
 export interface ISensor<TDevice, TProps> {
   run(params: ISensorProps<TDevice, TProps>): Promise<number | null>;
   isAvailable(): Promise<boolean>;
-  getConfigOptions(): Promise<any>;
+  getConfigOptions(config: TDevice): Promise<any>;
 }
 
 export const ISensor = class Dummy {} as ClassType<ISensor<any, any>>;
@@ -31,11 +31,11 @@ export abstract class Sensor<TDevice, TProps>
     return true;
   }
 
-  public async getConfigOptions() {
-    return await this.configOptions.build();
+  public async getConfigOptions(config: TDevice) {
+    return await this.configOptions.build(config);
   }
 
   protected abstract process(
-    params: ISensorProps<TDevice, TProps>
+    params: ISensorProps<TDevice, TProps>,
   ): Promise<number | null>;
 }

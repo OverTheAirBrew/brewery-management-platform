@@ -1,25 +1,33 @@
-FROM node:18 as preinstall
+FROM node:18 as base
+RUN npm i -g turbo pnpm
+
+FROM base AS builder
+# Set working directory
 WORKDIR /app
-
-ENV NODE_ENV=production
-ENV HUSKY_SKIP_INSTALL=1
-ENV DOCKER=true
-
-LABEL maintainer="Nick Sharp <nick@overtheairbrew.com>"
-
 COPY . .
+RUN turbo prune --scope=@overtheairbrew/backend
 
-RUN npm ci --omit=dev
+FROM base AS installer
+WORKDIR /app
+COPY --from=builder /app/out/ .
+COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=builder /app/turbo.json ./turbo.json
 
-FROM node:18-slim
+RUN pnpm install
 
+FROM base AS sourcer
 WORKDIR /app
 
-COPY --from=preinstall /app ./
+COPY --from=installer /app/ .
+COPY .gitignore .gitignore
+RUN yarn turbo run build --scope=@overtheairbrew/backend...
+RUN pnpm install --prod --force
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nestjs
-USER nestjs
+FROM node:18-slim as runner
+WORKDIR /app
 
-CMD node ./apps/backend/dist/main.js
+ENV PORT=3000
 
+COPY --from=sourcer /app/ .
+
+CMD [ "node", "apps/backend/dist/main.js" ]

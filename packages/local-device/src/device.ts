@@ -7,11 +7,13 @@ import {
   SensorIdentifier,
 } from '@overtheairbrew/plugins';
 
+export interface ILocalDeviceConfig {}
+
 @Injectable()
-export class LocalDevice extends Device<{}> {
+export class LocalDevice extends Device<ILocalDeviceConfig> {
   constructor(
     @Inject(ActorIdentifier) public actors: Actor<any, any>[],
-    @Inject(SensorIdentifier) public sensors: Sensor<any, any>[]
+    @Inject(SensorIdentifier) public sensors: Sensor<any, any>[],
   ) {
     super();
   }

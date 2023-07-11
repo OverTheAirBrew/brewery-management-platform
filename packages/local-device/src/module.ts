@@ -1,5 +1,8 @@
 import { Module } from '@nestjs/common';
-import { DS18B20Controller } from '@overtheairbrew/one-wire-sensor';
+import {
+  DS18B20Controller,
+  IOneWireController,
+} from '@overtheairbrew/one-wire-sensor/dist';
 import {
   Actor,
   ActorIdentifier,
@@ -18,7 +21,6 @@ const Sensors = [OneWireSensor, DummySensor];
 
 @Module({
   providers: [
-    DS18B20Controller,
     ...Actors,
     ...Sensors,
     {
@@ -34,6 +36,10 @@ const Sensors = [OneWireSensor, DummySensor];
         return sensors.filter(async (sensor) => await sensor.isAvailable());
       },
       inject: [...Sensors],
+    },
+    {
+      provide: IOneWireController,
+      useClass: DS18B20Controller,
     },
     LocalDevice,
   ],

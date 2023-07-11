@@ -1,9 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { LogicTypeOutput } from '@overtheairbrew/shared';
 import { LogicTypesService } from '../lib/services/logic-types.service';
 
 @Controller('/logic-types')
+@ApiTags('Logic Types')
 export class LogicTypesController {
   constructor(private logicTypesService: LogicTypesService) {}
 

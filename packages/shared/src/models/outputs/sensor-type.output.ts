@@ -11,7 +11,7 @@ import { PropertyOutputs } from './property.outputs';
   NumberPropertyOutput,
   SelectBoxPropertyOutput,
 )
-export class DeviceTypeOutput {
+export class SensorTypeOutput {
   constructor(name: string, properties: PropertyOutputs[]) {
     this.name = name;
     this.properties = properties;

@@ -14,7 +14,16 @@ const processDirectory = (directory: string) => {
     if (existsSync(join(directory, dir, 'package.json'))) {
       packageDirectories.push(join(directory, dir));
     } else {
-      if (['.bin', '.package-lock.json', '.DS_Store', '.cache'].includes(dir))
+      if (
+        [
+          '.bin',
+          '.package-lock.json',
+          '.DS_Store',
+          '.cache',
+          '.modules.yaml',
+          '.pnpm',
+        ].includes(dir)
+      )
         continue;
 
       const packages = processDirectory(join(directory, dir));

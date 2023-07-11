@@ -11,7 +11,7 @@ export class LogicTypesService {
   }
 
   private async mapLogicType(logic: Logic<any>): Promise<LogicTypeOutput> {
-    const properties = await logic.getConfigOptions();
+    const properties = await logic.getConfigOptions(undefined);
     return new LogicTypeOutput(logic.name, properties);
   }
 }
