@@ -31,7 +31,7 @@ jobs:
       - run: |
           git config --global user.name "ota-brewbot"
           git config --global user.email "infra@overtheairbrew.com"
-          git remote add origin "https://${{ secrets.BOT_GITHUB_TOKEN }}@github.com/${{ github.repository_owner}}/${{ github.repository }}}}"
+          git config --local --unset http.https://github.com/.extraheader
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm release:canary
