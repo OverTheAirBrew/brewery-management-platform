@@ -2,10 +2,6 @@
   "name": "brewery-management-platform",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "turbo run build",
     "build:local": "turbo run build:local",
