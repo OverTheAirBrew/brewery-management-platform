@@ -28,10 +28,6 @@ jobs:
         id: pnpm-install
         with:
           version: 8
-      - run: |
-          git config --global user.name "ota-brewbot"
-          git config --global user.email "infra@overtheairbrew.com"
-          git config --local --unset http.https://github.com/.extraheader
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm release:canary
