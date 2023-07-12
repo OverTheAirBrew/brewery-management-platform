@@ -48,6 +48,7 @@ WORKDIR /app
 
 COPY ./out .
 RUN pnpm install
+RUN pnpm prune --prod
 
 FROM node:18-slim
 

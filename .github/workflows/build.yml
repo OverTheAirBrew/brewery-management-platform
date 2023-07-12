@@ -27,7 +27,7 @@ jobs:
         with:
           version: 8
       - run: turbo prune --scope=@overtheairbrew/bmp-backend
-      - run: pnpm install
+      - run: pnpm install --dev
         working-directory: out
       - run: pnpm build
         working-directory: out
