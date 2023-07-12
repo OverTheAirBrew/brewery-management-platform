@@ -26,12 +26,7 @@ jobs:
         id: pnpm-install
         with:
           version: 8
-      - run: pnpm install --dev
-      - run: turbo prune --scope=@overtheairbrew/bmp-backend
-      - run: pnpm install --dev
-        working-directory: out
-      - run: pnpm build
-        working-directory: out
+      - run: pnpm install
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:

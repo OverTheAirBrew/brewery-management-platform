@@ -46,7 +46,12 @@ RUN npm i -g pnpm
 
 WORKDIR /app
 
-COPY ./out .
+COPY ./apps ./apps
+COPY ./packages ./packages
+COPY ./package.json .
+COPY ./pnpm-lock.yaml .
+COPY ./pnpm-workspace.yaml .
+
 RUN pnpm install
 RUN pnpm prune --prod
 
