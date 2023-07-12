@@ -11,9 +11,6 @@ importers:
       '@auto-it/conventional-commits':
         specifier: ^10.46.0
         version: 10.46.0(@types/node@18.16.19)(typescript@4.7.4)
-      '@auto-it/docker':
-        specifier: ^10.46.0
-        version: 10.46.0(@types/node@18.16.19)(typescript@4.7.4)
       '@auto-it/npm':
         specifier: ^10.46.0
         version: 10.46.0(@types/node@18.16.19)(typescript@4.7.4)
@@ -504,23 +501,6 @@ packages:
       - '@swc/wasm'
       - encoding
       - supports-color
-    dev: true
-
-  /@auto-it/docker@10.46.0(@types/node@18.16.19)(typescript@4.7.4):
-    resolution: {integrity: sha512-0xf3WQ505vrvwDvM2qadxZplWwfZRbcFhxKp75SWzjjmm75RRxnLP3H2xiGqa/Wi05LJaNqkoCt7j1xNQvDFcw==}
-    dependencies:
-      '@auto-it/core': 10.46.0(@types/node@18.16.19)(typescript@4.7.4)
-      fp-ts: 2.16.0
-      io-ts: 2.2.20(fp-ts@2.16.0)
-      semver: 7.5.4
-      tslib: 2.1.0
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - encoding
-      - supports-color
-      - typescript
     dev: true
 
   /@auto-it/npm@10.46.0(@types/node@18.16.19)(typescript@4.7.4):
