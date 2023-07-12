@@ -3,7 +3,7 @@ name: Build backend docker image
 on:
   push:
     tags:
-      - '@overtheairbrew/bmp-backend*'
+      - '*bmp-backend*'
 
 env:
   REGISTRY: ghcr.io
