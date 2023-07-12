@@ -1,0 +1,24 @@
+name: Pull Request
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvm
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm release:canary
+          
+      

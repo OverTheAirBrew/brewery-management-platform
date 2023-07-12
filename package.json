@@ -16,7 +16,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "is-ci || husky install",
     "release": "auto shipit --dry-run",
-    "release:ci": "auto shipit -v"
+    "release:ci": "auto shipit -v",
+    "release:canary": "pnpm auto canary --force --verbose"
   },
   "devDependencies": {
     "@auto-it/conventional-commits": "^10.46.0",
