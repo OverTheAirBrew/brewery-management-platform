@@ -11,9 +11,6 @@ env:
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        app: [backend]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -30,7 +27,7 @@ jobs:
         uses: martinbeentjes/npm-get-version-action@v1.3.1
         with:
           path: apps/backend
-      - run: turbo prune --scope=@overtheairbrew/bmp-${{ matrix.app }}
+      - run: turbo prune --scope=@overtheairbrew/bmp-backend
       - run: pnpm install --no-frozen-lockfile && pnpm install
         working-directory: out
       - run: pnpm build
