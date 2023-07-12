@@ -13,7 +13,7 @@ COPY --from=builder /app/out/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=builder /app/turbo.json ./turbo.json
 
-RUN pnpm install
+RUN pnpm install --dev
 
 FROM base AS sourcer
 WORKDIR /app
