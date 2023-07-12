@@ -13,8 +13,11 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
-  build-backend-docker-image:
+  build-docker-image:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [backend]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -26,7 +29,7 @@ jobs:
         id: pnpm-install
         with:
           version: 8
-      - run: turbo prune --scope=@overtheairbrew/bmp-backend
+      - run: turbo prune --scope=@overtheairbrew/bmp-${{ matrix.app }}
       - run: pnpm install
         working-directory: out
       - run: pnpm build
@@ -45,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: ${{ env.REGISTRY }}/brewery-management-platform/backend
+          images: ${{ env.REGISTRY }}/brewery-management-platform/${{ matrix.app }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
