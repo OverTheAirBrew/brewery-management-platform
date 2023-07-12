@@ -14,9 +14,12 @@ jobs:
     outputs:
       hasChanged: steps.check.outputs.changed === 'true'
     steps:
+      - uses: actions/checkout@v3
       - name: Check if version has been updated
         id: check
         uses: EndBug/version-check@v2
+        with:
+          file-name: apps/backend/package.json
       - run: echo ${{ steps.check.outputs.changed }}
 
   build-docker-image:
