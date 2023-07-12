@@ -5,7 +5,7 @@ FROM base AS builder
 # Set working directory
 WORKDIR /app
 COPY . .
-RUN turbo prune --scope=@overtheairbrew/bpm-backend
+RUN turbo prune --scope=@overtheairbrew/bmp-backend
 
 FROM base AS installer
 WORKDIR /app
