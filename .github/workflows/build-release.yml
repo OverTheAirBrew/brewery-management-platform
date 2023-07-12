@@ -29,7 +29,7 @@ jobs:
         id: pnpm-install
         with:
           version: 8
-      - run: git remote set-url origin https://${{ github.actor }}:${{ secrets.BREWBOT_GITHUB_TOKEN }}@github.com/${{ github.repository }}
+      - run: git remote set-url origin https://ota-brewbot:${{ secrets.BREWBOT_GITHUB_TOKEN }}@github.com/${{ github.repository }}
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm release:canary
