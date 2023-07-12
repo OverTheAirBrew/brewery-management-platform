@@ -3,18 +3,17 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 const PORT = parseInt(process.env.PORT) || 3000;
+const VERSION = process.env.VERSION || 'development';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  // entry
 
   const config = new DocumentBuilder()
     .setTitle('Brewery Management System Api')
     .setDescription(
       'The api powering the Over The Air Brew brewery management system.',
     )
-    .setVersion('1.0')
+    .setVersion(VERSION)
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

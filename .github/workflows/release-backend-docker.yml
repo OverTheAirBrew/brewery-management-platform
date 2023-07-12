@@ -55,3 +55,5 @@ jobs:
           labels: |
             org.opencontainers.image.source=https://github.com/overtheairbrew/brewery-management-platform
           platforms: linux/arm64,linux/amd64
+          build-args: |
+            VERSION=${{ steps.package-version.outputs.current-version }}
