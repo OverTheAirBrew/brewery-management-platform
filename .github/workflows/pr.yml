@@ -1,6 +1,9 @@
-name: Pull Request
+name: Build and Release
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types:
       - opened
@@ -24,6 +27,12 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm release:canary
+        if: github.ref != 'refs/heads/main'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.BREWBOT_GITHUB_TOKEN }}
+      - run: pnpm release:ci
+        if: github.ref == 'refs/heads/main' 
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.BREWBOT_GITHUB_TOKEN }}
