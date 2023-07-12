@@ -16,7 +16,7 @@ jobs:
           node-version-file: .nvm
       - uses: actions/setup-node@v3
         with:
-          node-version-file: .nvm
+          node-version-file: .nvmrc
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm release:canary
