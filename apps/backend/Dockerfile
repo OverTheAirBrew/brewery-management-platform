@@ -30,4 +30,6 @@ ENV PORT=3000
 
 COPY --from=sourcer /app/ .
 
+RUN echo "Hello"
+
 CMD [ "node", "apps/backend/dist/main.js" ]
