@@ -2,21 +2,34 @@ name: Build backend docker image
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
 
 jobs:
-  build-docker-image:
+  check-for-changes:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/@overtheairbrew/bmp-backend')
+    outputs:
+      hasChanged: steps.check.outputs.changed === 'true'
+    steps:
+      - name: Check if version has been updated
+        id: check
+        uses: EndBug/version-check@v2
+      - run: echo ${{ steps.check.outputs.changed }}
+
+  build-docker-image:
+    needs:
+      - check-for-changes
+    runs-on: ubuntu-latest
+    if: needs.check-for-changes.outputs.hasChanged == 'true'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
+
       - run: npm i -g turbo@1.10.5
       - uses: pnpm/action-setup@v2
         name: Install pnpm
