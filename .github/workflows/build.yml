@@ -20,12 +20,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-      - run: npm i -g turbo@1.10.5
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
+      - run: npm i -g turbo@1.10.5 pnpm@8
+      # - uses: pnpm/action-setup@v2
+      #   name: Install pnpm
+      #   id: pnpm-install
+      #   with:
+      #     version: 8
       - run: turbo prune --scope=@overtheairbrew/bmp-backend
       - run: pnpm install --dev
         working-directory: out
