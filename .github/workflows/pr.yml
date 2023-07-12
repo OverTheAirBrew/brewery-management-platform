@@ -14,6 +14,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm release:canary
