@@ -1,4 +1,22 @@
-out
-output
-.turbo
-node_modules
+# # out
+# output
+# .turbo
+
+
+# Ignore everything
+*
+out/node_modules
+
+# Allow files and directories
+!out/**/dist/**
+!out/**/package.json
+!out/pnpm-lock.yaml
+!out/pnpm-workspace.yaml
+!out/.gitignore
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/*~
+**/*.log
+**/.DS_Store
+**/Thumbs.db
