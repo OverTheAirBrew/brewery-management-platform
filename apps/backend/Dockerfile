@@ -1,45 +1,33 @@
-FROM node:18 as builder
+FROM node:18 as base
+RUN npm i -g turbo pnpm
 
+FROM base AS builder
+# Set working directory
 WORKDIR /app
-
-RUN npm i -g turbo
 COPY . .
-RUN turbo prune --scope="@overtheairbrew/backend" --docker
+RUN turbo prune --scope=@overtheairbrew/backend
 
-FROM node:18 as installer
-
+FROM base AS installer
 WORKDIR /app
-RUN npm i -g turbo
+COPY --from=builder /app/out/ .
+COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=builder /app/turbo.json ./turbo.json
 
+RUN pnpm install
+
+FROM base AS sourcer
+WORKDIR /app
+
+COPY --from=installer /app/ .
 COPY .gitignore .gitignore
-COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/package-lock.json ./package-lock.json
+RUN yarn turbo run build --scope=@overtheairbrew/backend...
+RUN pnpm install --prod --force
 
-RUN npm ci
-
-COPY --from=builder /app/out/full/ .
-RUN turbo build --filter=@overtheairbrew/backend...
-
-COPY ./apps/create-app-bundle.sh .
-
-RUN ./minify-bundle.sh /app/packages /output/packages
-RUN ./minify-bundle.sh /app/apps /output/apps
-
-FROM node:18-slim
+FROM node:18-slim as runner
 WORKDIR /app
 
-ENV NODE_ENV=production
-ENV HUSKY_SKIP_INSTALL=1
+ENV PORT=3000
 
-LABEL maintainer="Nick Sharp <nick@overtheairbrew.com>"
-LABEL org.opencontainers.image.source https://github.com/overtheairbrew/brewery-management-platform
+COPY --from=sourcer /app/ .
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nestjs
-USER nestjs
-
-COPY --from=installer /output .
-COPY --from=installer /app/node_modules ./node_modules
-
-CMD node ./apps/backend/dist/main.js
-
+CMD [ "node", "apps/backend/dist/main.js" ]

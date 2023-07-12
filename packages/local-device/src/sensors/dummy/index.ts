@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Form, ISensorProps, Sensor } from '@overtheairbrew/shared';
+import { Form, ISensorProps, Sensor } from '@overtheairbrew/plugins';
 
 interface IDummySensorProps {
   values: string;

@@ -1,16 +1,19 @@
 import { Device, Logic } from '../base-types';
 
-export type PluginType = 'devices' | 'logics';
+export type PluginConfig = IPluginConfig &
+  (IDevicePluginConfig | ILogicPluginConfig);
 
-export type PluginConfig = { type: PluginType; modules: any[] } & (
-  | IDevicePluginConfig
-  | ILogicPluginConfig
-);
+export interface IPluginConfig {
+  type: string;
+  modules: any[];
+}
 
-interface IDevicePluginConfig {
+export interface IDevicePluginConfig {
+  type: 'device';
   devices: (abstract new (...args: any[]) => Device<any>)[];
 }
 
-interface ILogicPluginConfig {
+export interface ILogicPluginConfig {
+  type: 'logic';
   logics: (abstract new (...args: any[]) => Logic<any>)[];
 }

@@ -1,9 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { DeviceTypeOutput } from '@overtheairbrew/shared';
 import { DeviceTypesService } from '../lib/services/device-types.service';
 
 @Controller('/device-types')
+@ApiTags('Device Types')
 export class DeviceTypesController {
   constructor(private deviceTypesService: DeviceTypesService) {}
 

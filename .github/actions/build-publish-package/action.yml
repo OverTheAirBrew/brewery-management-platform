@@ -35,7 +35,7 @@ runs:
       shell: bash
       working-directory: ./out
       run: |
-        turbo build --filter=@overtheairbrew/plugins...
+        turbo build --filter=${{ inputs.PACKAGE_NAME }}...
     - name: Push Package
       shell: bash
       working-directory: ./out/packages/${{ inputs.PACKAGE_FOLDER }}

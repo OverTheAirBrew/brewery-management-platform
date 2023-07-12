@@ -3,7 +3,7 @@ import { LocalDevice } from './device';
 import { LocalDeviceModule } from './module';
 
 const config: PluginConfig = {
-  type: 'devices',
+  type: 'device',
   modules: [LocalDeviceModule],
   devices: [LocalDevice],
 };

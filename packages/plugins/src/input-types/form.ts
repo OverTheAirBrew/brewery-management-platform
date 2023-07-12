@@ -15,8 +15,8 @@ interface NumberOptions {
 }
 
 type SelectBoxValues =
-  | (() => Promise<string[]>)
-  | (() => string[])
+  | ((config: any) => Promise<string[]>)
+  | ((config: any) => string[])
   | Array<string>;
 
 interface SelectBoxOptions {
@@ -26,41 +26,50 @@ interface SelectBoxOptions {
 }
 
 interface IInput {
-  getData(): Promise<any>;
+  getData(config: any): Promise<any>;
 }
 
 class StringInput implements IInput {
-  constructor(private name: string, private options: StringOptions) {}
+  constructor(
+    private name: string,
+    private options: StringOptions,
+  ) {}
 
   async getData() {
     return new StringPropertyOutput(
       this.name,
       this.options.required || false,
-      this.options.placeholder || ''
+      this.options.placeholder || '',
     );
   }
 }
 
 class NumberInput implements IInput {
-  constructor(private name: string, private options: NumberOptions) {}
+  constructor(
+    private name: string,
+    private options: NumberOptions,
+  ) {}
 
   async getData() {
     return new NumberPropertyOutput(
       this.name,
       this.options.required || false,
-      this.options.defaultValue || 0
+      this.options.defaultValue || 0,
     );
   }
 }
 
 class SelectBoxInput implements IInput {
-  constructor(private name: string, private options: SelectBoxOptions) {}
+  constructor(
+    private name: string,
+    private options: SelectBoxOptions,
+  ) {}
 
-  async getData() {
+  async getData(config: any) {
     let values: string[];
 
     if (typeof this.options.values === 'function') {
-      values = await this.options.values();
+      values = await this.options.values(config);
     } else {
       values = this.options.values;
     }
@@ -69,7 +78,7 @@ class SelectBoxInput implements IInput {
       this.name,
       this.options.required || false,
       values,
-      this.options.defaultValue || ''
+      this.options.defaultValue || '',
     );
   }
 }
@@ -94,7 +103,7 @@ export class Form {
     return this;
   }
 
-  async build() {
-    return await Promise.all(this.inputs.map((input) => input.getData()));
+  async build(config: any) {
+    return await Promise.all(this.inputs.map((input) => input.getData(config)));
   }
 }

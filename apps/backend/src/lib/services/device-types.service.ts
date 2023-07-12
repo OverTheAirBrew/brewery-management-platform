@@ -11,6 +11,14 @@ export class DeviceTypesService {
     return await Promise.all(this.devices.map(this.mapDeviceType));
   }
 
+  async getRawDeviceType(deviceTypeId: string) {
+    const deviceType = this.devices.find(
+      (device) => device.name === deviceTypeId,
+    );
+
+    return deviceType;
+  }
+
   public isValidDeviceType(deviceType: string) {
     return this.devices.some((device) => device.name === deviceType);
   }
@@ -27,7 +35,7 @@ export class DeviceTypesService {
   }
 
   private async mapDeviceType(device: Device<any>): Promise<DeviceTypeOutput> {
-    const properties = await device.getConfigOptions();
+    const properties = await device.getConfigOptions(undefined);
 
     return new DeviceTypeOutput(device.name, properties);
   }

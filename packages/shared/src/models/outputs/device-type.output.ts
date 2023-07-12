@@ -4,14 +4,15 @@ import {
   SelectBoxPropertyOutput,
   StringPropertyOutput,
 } from '@overtheairbrew/plugins';
+import { PropertyOutputs } from './property.outputs';
 
 @ApiExtraModels(
   StringPropertyOutput,
   NumberPropertyOutput,
-  SelectBoxPropertyOutput
+  SelectBoxPropertyOutput,
 )
 export class DeviceTypeOutput {
-  constructor(name: string, properties: StringPropertyOutput[]) {
+  constructor(name: string, properties: PropertyOutputs[]) {
     this.name = name;
     this.properties = properties;
   }
@@ -22,17 +23,14 @@ export class DeviceTypeOutput {
   name: string;
 
   @ApiProperty({
-    oneOf: [
-      { $ref: getSchemaPath(StringPropertyOutput) },
-      { $ref: getSchemaPath(NumberPropertyOutput) },
-      { $ref: getSchemaPath(SelectBoxPropertyOutput) },
-    ],
-    type: () => Object,
-    isArray: true,
+    type: 'array',
+    items: {
+      oneOf: [
+        { $ref: getSchemaPath(StringPropertyOutput) },
+        { $ref: getSchemaPath(NumberPropertyOutput) },
+        { $ref: getSchemaPath(SelectBoxPropertyOutput) },
+      ],
+    },
   })
-  properties: (
-    | StringPropertyOutput
-    | SelectBoxPropertyOutput
-    | NumberPropertyOutput
-  )[];
+  properties: PropertyOutputs[];
 }

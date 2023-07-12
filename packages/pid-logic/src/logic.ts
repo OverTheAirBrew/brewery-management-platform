@@ -29,17 +29,17 @@ export class PidLogic extends Logic<IPidLogicParams> {
           defaultValue: 0,
         })
         .addInteger('d', {
-          required: false,
+          required: true,
           defaultValue: 0,
         })
-        .addInteger('max', { required: false })
+        .addInteger('max', { required: false }),
     );
   }
 
   protected async process(
     params: IPidLogicParams,
     currentTemp: number,
-    targetTemp: number
+    targetTemp: number,
   ): Promise<{
     heatTime: number;
     waitTime: number;
@@ -51,7 +51,7 @@ export class PidLogic extends Logic<IPidLogicParams> {
   private async calculate(
     params: IPidLogicParams,
     currentTemp: number,
-    targetTemp: number
+    targetTemp: number,
   ) {
     const kp = params.p;
     const ki = params.i * this.sample_time;

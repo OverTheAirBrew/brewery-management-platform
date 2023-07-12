@@ -9,7 +9,9 @@ import { IDBConfiguration } from './database.config';
 import { Device } from './entities/device.entity';
 
 const DatabaseModels: ModelCtor[] = [Device];
-const HOME_DIR = homedir();
+const HOME_DIR = process.env.DATA_DIR || homedir();
+
+console.log('USING HOME DIR: ', HOME_DIR);
 
 export const createSequelizeInstance = async (config: IDBConfiguration) => {
   //   if (config.mysql?.host) {
