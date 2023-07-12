@@ -30,7 +30,7 @@ jobs:
         with:
           version: 8
       - run: turbo prune --scope=@overtheairbrew/bmp-${{ matrix.app }}
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile && pnpm install
         working-directory: out
       - run: pnpm build
         working-directory: out
