@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-      - run: npm i -g turbo
+      - run: npm i -g turbo@1.10.5
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
