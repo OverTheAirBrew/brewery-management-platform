@@ -8,8 +8,6 @@ const VERSION = process.env.VERSION || 'dev';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  console.log('TESTING');
-
   const config = new DocumentBuilder()
     .setTitle('Brewery Management System Api')
     .setDescription(
