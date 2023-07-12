@@ -5,7 +5,7 @@ FROM base AS builder
 # Set working directory
 WORKDIR /app
 COPY . .
-RUN turbo prune --scope=@overtheairbrew/backend
+RUN turbo prune --scope=@overtheairbrew/bpm-backend
 
 FROM base AS installer
 WORKDIR /app
@@ -20,7 +20,7 @@ WORKDIR /app
 
 COPY --from=installer /app/ .
 COPY .gitignore .gitignore
-RUN yarn turbo run build --scope=@overtheairbrew/backend...
+RUN yarn turbo run build --scope=@overtheairbrew/bmp-backend...
 RUN pnpm install --prod --force
 
 FROM node:18-slim as runner
