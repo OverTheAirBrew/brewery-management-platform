@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@auto-it/conventional-commits": "^10.46.0",
-    "@auto-it/docker": "^10.46.0",
     "@auto-it/npm": "^10.46.0",
     "@commitlint/config-conventional": "^17.6.1",
     "auto": "^10.46.0",
