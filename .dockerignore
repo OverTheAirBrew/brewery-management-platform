@@ -5,13 +5,14 @@
 
 # Ignore everything
 *
+out/node_modules
 
 # Allow files and directories
-!**/dist/**
-!**/package.json
-!pnpm-lock.yaml
-!pnpm-workspace.yaml
-!.gitignore
+!out/**/dist/**
+!out/**/package.json
+!out/pnpm-lock.yaml
+!out/pnpm-workspace.yaml
+!out/.gitignore
 
 # Ignore unnecessary files inside allowed directories
 # This should go after the allowed directories
