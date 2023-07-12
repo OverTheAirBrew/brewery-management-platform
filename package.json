@@ -46,7 +46,6 @@
     "plugins": [
       "npm",
       "conventional-commits",
-      "docker",
       "released"
     ]
   }
