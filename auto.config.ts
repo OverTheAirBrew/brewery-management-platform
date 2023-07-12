@@ -8,6 +8,6 @@ const npmOptions: INpmConfig = {
 /** Auto configuration */
 export default function rc(): AutoRc {
   return {
-    plugins: ['released', ['npm', npmOptions], ['docker', { latest: true }]],
+    plugins: ['released', 'conventional-commits', ['npm', npmOptions]],
   };
 }
