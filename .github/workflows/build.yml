@@ -20,12 +20,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-      - run: npm i -g turbo@1.10.5 pnpm@8
-      # - uses: pnpm/action-setup@v2
-      #   name: Install pnpm
-      #   id: pnpm-install
-      #   with:
-      #     version: 8
+      - run: npm i -g turbo@1.10.5
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+      - run: pnpm install --dev
       - run: turbo prune --scope=@overtheairbrew/bmp-backend
       - run: pnpm install --dev
         working-directory: out
@@ -87,9 +88,7 @@ jobs:
       #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       #     GH_TOKEN: ${{ secrets.BREWBOT_GITHUB_TOKEN }}
       # - run: pnpm release:ci
-      #   if: github.ref == 'refs/heads/main' 
+      #   if: github.ref == 'refs/heads/main'
       #   env:
       #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       #     GH_TOKEN: ${{ secrets.BREWBOT_GITHUB_TOKEN }}
-          
-      
