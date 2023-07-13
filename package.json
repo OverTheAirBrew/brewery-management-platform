@@ -9,7 +9,9 @@
     ],
     "nohoist": [
       "**/tsup",
-      "**/tsup/**"
+      "**/tsup/**",
+      "**/@overtheairbrew/tsconfig",
+      "**/@overtheairbrew/tsconfig/**"
     ]
   },
   "scripts": {
@@ -24,6 +26,9 @@
     "release": "auto shipit --dry-run",
     "release:ci": "auto shipit -v",
     "release:canary": "auto canary --force --verbose"
+  },
+  "resolutions": {
+    "ts-node": "^10"
   },
   "devDependencies": {
     "@auto-it/conventional-commits": "^10.46.0",
