@@ -2,6 +2,32 @@
 
 #### 🚀 Enhancement
 
+- feat: updates [#28](https://github.com/OverTheAirBrew/brewery-management-platform/pull/28) ([@sharpn](https://github.com/sharpn))
+- feat: only run dedupe locally [#27](https://github.com/OverTheAirBrew/brewery-management-platform/pull/27) ([@sharpn](https://github.com/sharpn))
+- feat: ignoring yarn integrity file from plugin loader [#26](https://github.com/OverTheAirBrew/brewery-management-platform/pull/26) ([@sharpn](https://github.com/sharpn))
+- feat: correcting docker tagging [#25](https://github.com/OverTheAirBrew/brewery-management-platform/pull/25) ([@sharpn](https://github.com/sharpn))
+- feat: increasing install timeout [#24](https://github.com/OverTheAirBrew/brewery-management-platform/pull/24) ([@sharpn](https://github.com/sharpn))
+- feat: using yarn 3 [#22](https://github.com/OverTheAirBrew/brewery-management-platform/pull/22) ([@sharpn](https://github.com/sharpn))
+- feat: testing [#21](https://github.com/OverTheAirBrew/brewery-management-platform/pull/21) ([@sharpn](https://github.com/sharpn))
+- feat: frozen lock in docker [#20](https://github.com/OverTheAirBrew/brewery-management-platform/pull/20) ([@sharpn](https://github.com/sharpn))
+- feat: update [#19](https://github.com/OverTheAirBrew/brewery-management-platform/pull/19) ([@sharpn](https://github.com/sharpn))
+- feat: test [#18](https://github.com/OverTheAirBrew/brewery-management-platform/pull/18) ([@sharpn](https://github.com/sharpn))
+- feat: test [#17](https://github.com/OverTheAirBrew/brewery-management-platform/pull/17) ([@sharpn](https://github.com/sharpn))
+
+#### 🐛 Bug Fix
+
+- Revert "feat: using yarn 3" [#23](https://github.com/OverTheAirBrew/brewery-management-platform/pull/23) ([@sharpn](https://github.com/sharpn))
+
+#### Authors: 1
+
+- Nick Sharp ([@sharpn](https://github.com/sharpn))
+
+---
+
+# (Thu Jul 13 2023)
+
+#### 🚀 Enhancement
+
 - feat: ignoring yarn integrity file from plugin loader [#26](https://github.com/OverTheAirBrew/brewery-management-platform/pull/26) ([@sharpn](https://github.com/sharpn))
 - feat: correcting docker tagging [#25](https://github.com/OverTheAirBrew/brewery-management-platform/pull/25) ([@sharpn](https://github.com/sharpn))
 - feat: increasing install timeout [#24](https://github.com/OverTheAirBrew/brewery-management-platform/pull/24) ([@sharpn](https://github.com/sharpn))
