@@ -37,7 +37,7 @@
     "auto": "^10.46.0",
     "husky": "^8.0.0",
     "is-ci": "^3.0.1",
-    "prettier": "latest",
+    "prettier": "3.0.0",
     "turbo": "^1.10.5",
     "typescript": "^4.7.4"
   },
