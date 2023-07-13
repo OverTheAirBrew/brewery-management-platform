@@ -22,6 +22,7 @@ const processDirectory = (directory: string) => {
           '.cache',
           '.modules.yaml',
           '.pnpm',
+          '.yarn-integrity',
         ].includes(dir)
       )
         continue;
