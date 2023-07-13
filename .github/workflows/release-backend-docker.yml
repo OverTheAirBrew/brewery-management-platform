@@ -24,7 +24,7 @@ jobs:
         with:
           path: apps/backend
       - run: yarn prune:backend
-      - run: yarn install --frozen-lockfile --production=false
+      - run: yarn install --immutable --production=false
         working-directory: out
       - run: yarn build
         working-directory: out

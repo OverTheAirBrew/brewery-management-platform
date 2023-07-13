@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
       - run: yarn build
       - run: |
           git config user.name ota-brewbot

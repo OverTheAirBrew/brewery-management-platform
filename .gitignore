@@ -41,3 +41,4 @@ build
 !commitlint.config.js
 
 .yarn/cache
+.yarn/install-state.gz
