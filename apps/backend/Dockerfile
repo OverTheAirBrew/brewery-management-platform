@@ -1,12 +1,8 @@
 FROM node:18-bullseye as reinstall
-
-RUN npm i -g pnpm
-
 WORKDIR /app
 
 COPY ./out .
-RUN pnpm install
-RUN pnpm prune --prod
+RUN yarn install --production
 
 FROM node:18-slim
 

@@ -23,17 +23,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
       - run: |
           git config user.name ota-brewbot
           git config user.email infra@overtheairbrew.com
-      - run: pnpm release:ci
+      - run: yarn release:ci
         if: github.ref == 'refs/heads/main'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -10,8 +10,8 @@ out/node_modules
 # Allow files and directories
 !out/**/dist/**
 !out/**/package.json
-!out/pnpm-lock.yaml
-!out/pnpm-workspace.yaml
+!out/yarn.lock
+!out/package.json
 !out/.gitignore
 
 # Ignore unnecessary files inside allowed directories
