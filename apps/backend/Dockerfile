@@ -4,6 +4,7 @@ WORKDIR /app
 COPY ./out .
 RUN yarn install --production --frozen-lockfile
 
+
 FROM node:18-slim
 
 ARG VERSION
