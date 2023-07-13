@@ -31,8 +31,8 @@
   },
   "devDependencies": {
     "rimraf": "^5.0.0",
-    "tsconfig": "workspace:*",
-    "tsup": "^7.1.00"
+    "@overtheairbrew/tsconfig": "0.1.0",
+    "tsup": "^7.1.0"
   },
   "tsup": {
     "entry": [

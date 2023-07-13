@@ -2,10 +2,20 @@
   "name": "brewery-management-platform",
   "version": "0.0.0",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ],
+    "nohoist": [
+      "**/tsup",
+      "**/tsup/**"
+    ]
+  },
   "scripts": {
     "build": "turbo run build",
     "build:local": "turbo run build:local",
-    "prune:backend": "turbo prune --scope='@overtheairbrew/backend' --docker",
+    "prune:backend": "turbo prune --scope='@overtheairbrew/bmp-backend'",
     "build:all": "turbo run build",
     "dev": "turbo run start:dev",
     "lint": "turbo run lint",
@@ -13,7 +23,7 @@
     "prepare": "is-ci || husky install",
     "release": "auto shipit --dry-run",
     "release:ci": "auto shipit -v",
-    "release:canary": "pnpm auto canary --force --verbose"
+    "release:canary": "auto canary --force --verbose"
   },
   "devDependencies": {
     "@auto-it/conventional-commits": "^10.46.0",
@@ -22,7 +32,6 @@
     "auto": "^10.46.0",
     "husky": "^8.0.0",
     "is-ci": "^3.0.1",
-    "lerna": "6.6.0",
     "prettier": "latest",
     "turbo": "^1.10.5",
     "typescript": "^4.7.4"
@@ -30,7 +39,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@8.5.1",
+  "packageManager": "yarn@1.22.19",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"

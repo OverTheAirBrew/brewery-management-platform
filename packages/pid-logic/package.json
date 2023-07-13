@@ -29,14 +29,14 @@
     "url": "https://github.com/overtheairbrew/homebrew/issues"
   },
   "dependencies": {
-    "@overtheairbrew/plugins": "workspace:*",
-    "@overtheairbrew/shared": "workspace:*"
+    "@overtheairbrew/plugins": "0.0.0",
+    "@overtheairbrew/shared": "0.0.0"
   },
   "peerDependencies": {
     "@nestjs/common": "^10"
   },
   "devDependencies": {
-    "tsconfig": "workspace:*",
+    "@overtheairbrew/tsconfig": "0.1.0",
     "tsup": "^7.1.0"
   },
   "jest": {
