@@ -3,6 +3,7 @@ import { AutoRc } from 'auto';
 
 const npmOptions: INpmConfig = {
   exact: true,
+  monorepoChangelog: false,
 };
 
 /** Auto configuration */
