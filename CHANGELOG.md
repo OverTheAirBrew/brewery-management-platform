@@ -2,6 +2,18 @@
 
 #### 🚀 Enhancement
 
+- feat: test [#17](https://github.com/OverTheAirBrew/brewery-management-platform/pull/17) ([@sharpn](https://github.com/sharpn))
+
+#### Authors: 1
+
+- Nick Sharp ([@sharpn](https://github.com/sharpn))
+
+---
+
+# (Thu Jul 13 2023)
+
+#### 🚀 Enhancement
+
 - feat: test ([@sharpn](https://github.com/sharpn))
 - feat: bump ([@sharpn](https://github.com/sharpn))
 - feat: unlocking [#16](https://github.com/OverTheAirBrew/brewery-management-platform/pull/16) ([@sharpn](https://github.com/sharpn))
