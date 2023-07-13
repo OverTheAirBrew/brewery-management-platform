@@ -2,6 +2,22 @@
 
 #### 🚀 Enhancement
 
+- feat: testing [#21](https://github.com/OverTheAirBrew/brewery-management-platform/pull/21) ([@sharpn](https://github.com/sharpn))
+- feat: frozen lock in docker [#20](https://github.com/OverTheAirBrew/brewery-management-platform/pull/20) ([@sharpn](https://github.com/sharpn))
+- feat: update [#19](https://github.com/OverTheAirBrew/brewery-management-platform/pull/19) ([@sharpn](https://github.com/sharpn))
+- feat: test [#18](https://github.com/OverTheAirBrew/brewery-management-platform/pull/18) ([@sharpn](https://github.com/sharpn))
+- feat: test [#17](https://github.com/OverTheAirBrew/brewery-management-platform/pull/17) ([@sharpn](https://github.com/sharpn))
+
+#### Authors: 1
+
+- Nick Sharp ([@sharpn](https://github.com/sharpn))
+
+---
+
+# (Thu Jul 13 2023)
+
+#### 🚀 Enhancement
+
 - feat: frozen lock in docker [#20](https://github.com/OverTheAirBrew/brewery-management-platform/pull/20) ([@sharpn](https://github.com/sharpn))
 - feat: update [#19](https://github.com/OverTheAirBrew/brewery-management-platform/pull/19) ([@sharpn](https://github.com/sharpn))
 - feat: test [#18](https://github.com/OverTheAirBrew/brewery-management-platform/pull/18) ([@sharpn](https://github.com/sharpn))
