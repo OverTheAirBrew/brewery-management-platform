@@ -39,3 +39,5 @@ output/
 build
 
 !commitlint.config.js
+
+.yarn/cache
