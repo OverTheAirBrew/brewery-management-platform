@@ -1,6 +1,6 @@
 {
   "name": "@overtheairbrew/plugins",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "> TODO: description",
   "author": "Nick Sharp <nick.sharp.87@gmail.com>",
   "homepage": "https://github.com/overtheairbrew/homebrew#readme",
@@ -30,8 +30,8 @@
     "@nestjs/swagger": "^7"
   },
   "devDependencies": {
+    "@overtheairbrew/tsconfig": "0.2.0",
     "rimraf": "^5.0.0",
-    "@overtheairbrew/tsconfig": "0.1.0",
     "tsup": "^7.1.0"
   },
   "tsup": {
