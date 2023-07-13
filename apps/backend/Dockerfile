@@ -1,7 +1,7 @@
 FROM node:18-bullseye as reinstall
 WORKDIR /app
 
-ENV CI=true
+ENV DOCKER=true
 
 COPY ./out .
 RUN yarn install --production --frozen-lockfile --network-timeout 1000000000

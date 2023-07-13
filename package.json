@@ -22,7 +22,7 @@
     "dev": "turbo run start:dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "postinstall": "is-ci || (yarn-deduplicate yarn.lock && husky install)",
+    "postinstall": "$DOCKER || is-ci || (yarn-deduplicate yarn.lock && husky install)",
     "release": "auto shipit --dry-run",
     "release:ci": "auto shipit -v",
     "release:canary": "auto canary --force --verbose"
