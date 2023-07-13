@@ -6,6 +6,12 @@
     "packages": [
       "packages/*",
       "apps/*"
+    ],
+    "nohoist": [
+      "**/tsup",
+      "**/tsup/**",
+      "**/@overtheairbrew/tsconfig",
+      "**/@overtheairbrew/tsconfig/**"
     ]
   },
   "scripts": {
@@ -16,7 +22,7 @@
     "dev": "turbo run start:dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "postinstall": "is-ci || husky install",
+    "prepare": "is-ci || husky install",
     "release": "auto shipit --dry-run",
     "release:ci": "auto shipit -v",
     "release:canary": "auto canary --force --verbose"
@@ -38,7 +44,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "yarn@1.22.19",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"

@@ -2,7 +2,7 @@ FROM node:18-bullseye as reinstall
 WORKDIR /app
 
 COPY ./out .
-RUN yarn install --production --immutable
+RUN yarn install --production --frozen-lockfile
 
 
 FROM node:18-slim
